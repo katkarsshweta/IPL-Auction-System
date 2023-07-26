@@ -1,0 +1,114 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} Add a Player {% endblock title %}
+
+{% block form %} 
+
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Enter Player Details</h2>
+      </div>
+
+      <style>
+
+      </style>
+      <h4 style="color: rgb(62, 87, 164);">Personal Details</h4><br>
+
+      <form method="POST" action="/addPlayerForm" enctype="multipart/form-data">
+        <label for="playerName"><h3>Player Name:</h3></label>
+        <input style = 'margin-left:117px; height: 50px;width: 300px;font-size: 20px;' placeholder="Enter Full Name" type="text" name="playerName" required><br><br>
+        
+        <label for="nationality"><h3>Player Nationality:</h3></label>
+        <select style = 'margin-left:60px; height: 50px;width: 300px;font-size: 20px;' type="text" name="playerNation" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Indian">Indian</option>
+            <option value="Foreign">Foreign</option>
+          </select>
+          
+          <img src="static/assets/img/ipl2.png" alt="your image" style="float: right; width: 300px; height: 500px;margin-bottom: 0px">
+          
+          <br><br>
+
+          <label for="type"><h3>Player Type:</h3></label>
+        <select style = 'margin-left:133px; height: 50px;width: 300px;font-size: 20px;' type="text" name="playerType" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Baller">Baller</option>
+            <option value="Batter">Batter</option>
+            <option value="Wicket-Keeper">Wicket-Keeper</option>
+            <option value="All-Rounder">All Rounder</option>
+          </select>
+          
+          
+          <br><br><br><br>
+
+          <h4 style="color: rgb(62, 87, 164);">Career Details</h4><br>
+        
+        
+        <label for="avgRuns"><h3>Average Runs:</h3></label>
+        <input style = 'margin-left:110px; height: 50px;width: 300px;font-size: 20px;' placeholder="Average Runs" type="number" id="avgRuns" name="avgRuns" min="0" required><br><br>
+        
+        <label for="avgWickets"><h3>Average Wickets:</h3></label>
+        <input style = 'margin-left:70px; height: 50px;width: 300px;font-size: 20px;' placeholder="Average Wickets" type="number" id="avgWickets" name="avgWickets" min="0" required><br><br>
+
+        <label for="matches"><h3>Matches Played:</h3></label>
+        <input style = 'margin-left:87px; height: 50px;width: 300px;font-size: 20px;' placeholder="No. of matches played" type="number" id="matches" name="matches" min="0" required><br><br><br>
+        
+        <label for="basePrice"><h3 style="color: rgb(62, 87, 164);">Enter Base Price:</h3>(In Crores)</label>
+        <input style = 'margin-left:78px; height: 50px;width: 300px;font-size: 20px;' placeholder="Enter Base Price" type="number" id="basePrice" name="basePrice" min="0" required><br><br>
+        
+        <label for="playerImage"><h3 style="color: rgb(62, 87, 164);">Upload Photo:</h3></label>
+        <input style = 'margin-left:78px; height: 50px;width: 300px;font-size: 20px;' placeholder="Upload Photo here" type="file" id="playerImage" name="playerImage" required><br><br>
+        <style>
+
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+            
+            .btn{
+            
+            font-family: Nunito;
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+            background-color: #09325c;
+            padding: 8px 20px;
+            border: 2px solid #09325c;
+            box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+            border-radius: 9px;
+            transition : 1000ms;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 0 auto;
+            display: block;
+            }
+            
+            .btn:hover{
+            
+            transition : 1000ms;
+            padding: 10px 50px;
+            transform : translateY(-0px);
+            background-color: #fff;
+            color: #0066cc;
+            border: solid 2px #0066cc;
+            }
+            
+            </style>
+            
+            <!-- 2️⃣code HTML below -->
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+            <button type = "submit" class="btn">Add Player</button>
+      </form>
+    
+      
+      
+      
+      
+    </section><!-- End Add Player Section -->
+
+{% endblock form %}

@@ -1,0 +1,70 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} Update Franchise {% endblock title %}
+
+{% block form %} 
+
+<tr>
+    <td><h1 style="background-color: rgb(58, 88, 137);color: rgb(255, 255, 255);padding-top: 25px;padding-bottom: 25px;text-align: center;">Update your Franchise</h1></td>
+    <br>
+
+  </tr>
+<div style="display: flex;">
+    <h3 style="margin-right: 92px;">Franshise Name:</h3>
+    <h3>{{record.teamName}}</h3>
+  </div><br>
+  <form method="POST" action="/updateFranchise2/{{ record.teamName }}">
+<label for="ownerName"><h3>Owner Name:</h3></label>
+        <input style = 'margin-left:117px; height: 50px;width: 300px;font-size: 20px;' placeholder="Enter Full Name" type="text" name="ownerName" value="{{ record.ownerName }}" required><br><br>
+
+        <img src="static/assets/img/cricket-helmet.png" alt="your image" style="float: right; width: 250px; height: 250px;margin-top: -110px;">
+
+        <label for="ownerEmail"><h3>Owner Email:</h3></label>
+<input style = 'margin-left:124px; height: 50px;width: 300px;font-size: 20px;' placeholder="Enter Email ID" type="text" name="ownerEmail" value="{{ record.ownerEmail }}" required><br><br>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+    
+    .btn{
+    
+    font-family: Nunito;
+    font-weight: 300;
+    font-size: 15px;
+    color: #fff;
+    background-color: #09325c;
+    padding: 8px 20px;
+    border: 2px solid #09325c;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 9px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 0 auto;
+    display: block;
+    }
+    
+    .btn:hover{
+    
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #0066cc;
+    border: solid 2px #0066cc;
+    }
+    
+    </style>
+    
+    <!-- 2️⃣code HTML below -->
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+    <button type = "submit" class="btn">Save Changes</button>
+</form>
+
+
+{% endblock form %}

@@ -1,0 +1,89 @@
+{% extends 'baseSignIn.html' %}
+
+{% block title %} Register Franchise {% endblock title %}
+
+{% block form %} 
+
+<style>
+h3 {text-align: center;}
+
+</style>
+    
+<h3>FRANCHISE</h3>
+<h5 style="text-align: center;"> </h5>
+<br>
+{% include "message.html" %}
+<div class = "row">
+<div class = "col-md-4"></div>
+
+<div class = "col-md-4">
+    <form action = "/signin" method = "post">
+        <img src="static/assets/img/cricket (3).png" alt="your image" style="float: right; width: 50px; height: 50px;margin-bottom: 15px;margin-right: 163px">
+        <div class="form-group">
+        <input type = "text" class = "form-control mt-2" placeholder="Enter Your Full Name" name = "ownerName" required>
+        </div>
+
+        <div class="form-group">
+            <input type = "text" class = "form-control mt-2" placeholder="Enter Your Email ID" name = "ownerEmail" required>
+    </div>
+        <div class="form-group">
+            <input type = "text" class = "form-control mt-2" placeholder="Enter Your Franchise Name" name = "teamName" required>
+        </div>
+        
+        <div class="form-group">
+                <input type = "password" class = "form-control mt-2" placeholder="Enter Password" name = "ownerPass" required>
+        </div>
+                <!-- <div class = "col-md-4"></div> -->
+        <br>
+
+        <style>
+
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+            
+            .btn{
+            
+            font-family: Nunito;
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+            background-color: #09325c;
+            padding: 8px 20px;
+            border: 2px solid #09325c;
+            box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+            border-radius: 9px;
+            transition : 1000ms;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 0 auto;
+            display: block;
+            }
+            
+            .btn:hover{
+            
+            transition : 1000ms;
+            padding: 10px 50px;
+            transform : translateY(-0px);
+            background-color: #fff;
+            color: #0066cc;
+            border: solid 2px #0066cc;
+            }
+            
+            </style>
+            
+            <!-- 2️⃣code HTML below -->
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+            <button type = "submit" class="btn">REGISTER</button>
+<!-- </div> -->
+
+</form>
+
+</div>
+</div>
+
+{% endblock form %}

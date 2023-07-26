@@ -1,0 +1,54 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} Update a Player {% endblock title %}
+
+{% block form %} 
+
+
+<div class="section-title">
+  <h2>Update Player</h2>
+</div>
+<table class="table text-center" cellpadding ="30">
+            
+    <tr>
+      <th><h3>ID </h3></th>
+      <th><h3>Player Name</h3></th>
+      <th><h3>Nationality </h3></th>
+      <th><h3>Player Type</h3></th>
+      <th><h3>Average Runs</h3><h11>(per over)</h11></th>
+      <th><h3>Average Wickets</h3></th>
+      <th><h3>Matches Played</h3></th>
+      <th><h3>Base Price</h3><h11>(in Crores)</h11></th>
+    </tr>
+    <style>
+      h11 {
+        color: rgb(63, 56, 159);
+      }
+    </style>
+
+    {% for i in plrInfo %}
+    <tr>
+      <td>{{ i.playerID }}</td>
+      <td>{{ i.playerName }}</td>
+      <td>{{ i.playerNation }}</td>
+      <td>{{ i.playerType }}</td>
+      <td>{{ i.avgRuns }}</td>
+      <td>{{ i.avgWickets }}</td>
+      <td>{{ i.matches }}</td>
+      <td>{{ i.basePrice }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <form action = '/updatePlayerForm' method = 'POST'>
+    <select style="height: 50px; text-align: center; margin-left: 426px;" name = "playerID">
+      <option value="None">No player selected</option>
+      {% for i in plrInfo %}
+      <option value="{{ i.playerID }}">{{ i.playerID }}</option>
+      {% endfor %}
+    </select>
+    <button type = "submit" class = "btn btn-info" style ="height: 50px;margin-left: 50px;margin-bottom: 3px;">GO!</button>
+    
+    </form>
+
+{% endblock form %}

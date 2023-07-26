@@ -1,0 +1,137 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} View Franchise {% endblock title %}
+
+{% block form %} 
+
+<!-- <style>
+    h3 {text-align: center;}
+    
+    </style> -->
+        
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>FRANCHISES AT A GLANCE</h2>
+          </div>
+
+          <!-- <h3>Display all franchises - Name, Owner, Budget</h3> -->
+
+          <table class="table text-center" cellpadding ="30">
+            
+            <tr>
+              <th><h3>ID </h3></th>
+              <th><h3>Franchise Name</h3></th>
+              <th><h3>Owner Name </h3></th>
+              <th><h3>Budget </h3>(in Cr)</th>
+            </tr>
+        
+            {% for i in franchises %}
+            <tr>
+              <td>{{ i.ownerID }}</td>
+              <td>{{ i.teamName }}</td>
+              <td>{{ i.ownerName }}</td>
+              <td>{{ i.totBudget }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+            <br>
+          <!-- <button type ='submit' href="viewPlayers"  class = "btn btn-info btn-lg" style="border-radius: 1px; background-color: rgb(32, 124, 158);">Remove a Franchise</button> -->
+          <!-- <button class="btn btn-info btn-lg" style="border-radius: 6px; background-color: rgb(32, 124, 158);" onclick="location.href='/removeFranchise'">Remove a Franchise</button> -->
+        <!--1️⃣ code CSS below -->
+
+<!-- <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+    
+    .btn{
+    
+    font-family: Nunito;
+    font-weight: 300;
+    font-size: 17px;
+    color: #fff;
+    background-color: #2d4862;
+    padding: 8px 20px;
+    border: 2px solid #2d4862;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 9px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 0 auto;
+    display: block;
+    }
+    
+    .btn:hover{
+    
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #0066cc;
+    border: solid 2px #0066cc;
+    }
+    
+    </style>
+    
+    <button class="btn" onclick="location.href='/removeFranchise'">Remove a Franchise</button><br> -->
+        
+
+    <form action = '/updateFranchise' method = 'POST'>
+      <select style="height: 50px; text-align: center; margin-left: 426px;" name = "teamName">
+        <option value="None">No franchise selected</option>
+        {% for i in franchises %}
+        <option value="{{ i.teamName }}">{{ i.teamName }}</option>
+        {% endfor %}
+      </select>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+      
+      .btn{
+      
+      font-family: Nunito;
+      font-weight: 300;
+      font-size: 17px;
+      color: #fff;
+      background-color: #2d4862;
+      padding: 8px 20px;
+      border: 2px solid #2d4862;
+      box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+      border-radius: 9px;
+      transition : 1000ms;
+      transform: translateY(0);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin: 0 auto;
+      display: block;
+      }
+      
+      .btn:hover{
+      
+      transition : 1000ms;
+      padding: 10px 50px;
+      transform : translateY(-0px);
+      background-color: #fff;
+      color: #0066cc;
+      border: solid 2px #0066cc;
+      }
+      
+      </style>
+      
+      <!-- 2️⃣code HTML below -->
+      
+      <button class="btn">Edit a Franchise</button>
+    </form>
+        </div>
+      </section><!-- End Franchise Section -->
+
+
+{% endblock form %}

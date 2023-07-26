@@ -1,0 +1,99 @@
+{% extends 'viewBase.html' %}
+{% block title %} View Teams {% endblock title %}
+{% block form %}
+
+<tr>
+    <td><h1 style="background-color: rgb(58, 88, 137);color: rgb(255, 255, 255);padding-top: 25px;padding-bottom: 25px;text-align: center;">{{ teamName }}</h1></td>
+    <br>
+
+  </tr>
+<table class="table text-center" cellpadding ="30">
+<tr>
+<th><h3>ID </h3></th>
+<th><h3>Player Name</h3></th>
+<th><h3>Player Type</h3></th>
+<th><h3>Nationality </h3></th>
+<th><h3>Base Price</h3></th>
+<th><h3>Selling Price</h3>(in Cr.)</th>
+</tr>
+{% for i in playerlist %}
+<tr>
+<td>{{ i.playerID }}</td>
+<td>{{ i.playerName}}</td>
+<td>{{ i.playerType }}</td>
+<td>{{ i.playerNation }}</td>
+<td>{{ i.basePrice }}</td>
+<td>{{ i.sellingP }}</td>
+</tr>
+{% endfor %}
+</table><br><br>
+
+<h2 style = 'text-align: center;'>Budget Remaining: {{budget[0][0]}} Crores</h2>
+<div style="width:50%; margin: 0 auto;">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var data = JSON.parse('{{ data|tojson|safe }}');
+    var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Batters', 'Ballers', 'All-Rounders', 'Wicket-Keepers'],
+            datasets: [{
+                label: 'Players',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(144, 238, 144, 0.2)',
+                    'rgba(255, 255, 0, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(60, 179, 113, 1)',
+                    'rgba(255, 191, 0, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                            return previousValue + currentValue;
+                        });
+                        var currentValue = dataset.data[tooltipItem.index];
+                        var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+                        return percentage + "%";
+                    }
+                }
+            }
+        }
+    });
+</script>
+<br><br>
+
+<form action = '/releasePlayer' method = 'POST'>
+    <h2 style=" text-align: center;">Release Player</h2>
+    <select style="height: 50px; text-align: center; margin-left: 426px;" name = "playerID">
+      <option value="None">No player selected</option>
+      {% for i in playerlist %}
+      <option value="{{ i.playerID }}">{{ i.playerID }}</option>
+      {% endfor %}
+    </select>
+    <button type = "submit" class = "btn btn-info" style ="height: 50px;margin-left: 50px;margin-bottom: 3px;">GO!</button>
+   
+    </form><br>
+    <div style='text-align: center;'>
+        *(A penalty of 50% on final bid amount be imposed.)
+    </div>
+    
+
+{% endblock form %}

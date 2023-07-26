@@ -1,0 +1,187 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} Players {% endblock title %}
+
+{% block form %} 
+
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>PLAYER ROSTER</h2>
+      </div>
+      {% include "message.html" %}
+      <!-- <h3>Display all players - Name, Type, Base Price, Availability </h3> -->
+
+      <form method="GET">
+        <label for="condition">Filter players by:</label>
+        <select name="condition" id="condition">
+          {% for condition in conditions %}
+          <option value="{{ condition }}">{{ condition }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Apply filter</button>
+      </form>
+
+
+
+      <table class="table text-center" cellpadding ="30">
+            
+        <tr>
+          <th><h3>ID </h3></th>
+          <th><h3>Player Name</h3></th>
+          <th><h3>Nationality </h3></th>
+          <th><h3>Player Type</h3></th>
+          <th><h3>Average Runs</h3><h11>(per over)</h11></th>
+          <th><h3>Average Wickets</h3></th>
+          <th><h3>Matches Played</h3></th>
+          <th><h3>Base Price</h3><h11>(in Crores)</h11></th>
+        </tr>
+        <style>
+          h11 {
+            color: rgb(63, 56, 159);
+          }
+        </style>
+    
+        {% for i in plrInfo %}
+        <tr>
+          <td>{{ i.playerID }}</td>
+          <td>{{ i.playerName }}</td>
+          <td>{{ i.playerNation }}</td>
+          <td>{{ i.playerType }}</td>
+          <td>{{ i.avgRuns }}</td>
+          <td>{{ i.avgWickets }}</td>
+          <td>{{ i.matches }}</td>
+          <td>{{ i.basePrice }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+        <div style="display: flex;">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+        
+        .btn{
+        
+        font-family: Nunito;
+        font-weight: 300;
+        font-size: 17px;
+        color: #fff;
+        background-color: #2d4862;
+        padding: 8px 20px;
+        border: 2px solid #2d4862;
+        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border-radius: 9px;
+        transition : 1000ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin: 0 auto;
+        display: block;
+        }
+        
+        .btn:hover{
+        
+        transition : 1000ms;
+        padding: 10px 50px;
+        transform : translateY(-0px);
+        background-color: #fff;
+        color: #0066cc;
+        border: solid 2px #0066cc;
+        }
+        
+        </style>
+        
+        <!-- 2️⃣code HTML below -->
+        
+        <button class="btn" onclick="location.href='/addPlayer'">Add a Player</button><br>
+
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+          
+          .btn{
+          
+          font-family: Nunito;
+          font-weight: 300;
+          font-size: 17px;
+          color: #fff;
+          background-color: #2d4862;
+          padding: 8px 20px;
+          border: 2px solid #2d4862;
+          box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+          border-radius: 9px;
+          transition : 1000ms;
+          transform: translateY(0);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          cursor: pointer;
+          text-transform: uppercase;
+          margin: 0 auto;
+          display: block;
+          }
+          
+          .btn:hover{
+          
+          transition : 1000ms;
+          padding: 10px 50px;
+          transform : translateY(-0px);
+          background-color: #fff;
+          color: #0066cc;
+          border: solid 2px #0066cc;
+          }
+          
+          </style>
+          
+          <!-- 2️⃣code HTML below -->
+          
+          <button class="btn" onclick="location.href='/removePlayer'">Delete a Player</button><br>
+      
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+            
+            .btn{
+            
+            font-family: Nunito;
+            font-weight: 300;
+            font-size: 17px;
+            color: #fff;
+            background-color: #2d4862;
+            padding: 8px 20px;
+            border: 2px solid #2d4862;
+            box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+            border-radius: 9px;
+            transition : 1000ms;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 0 auto;
+            display: block;
+            }
+            
+            .btn:hover{
+            
+            transition : 1000ms;
+            padding: 10px 50px;
+            transform : translateY(-0px);
+            background-color: #fff;
+            color: #0066cc;
+            border: solid 2px #0066cc;
+            }
+            
+            </style>
+            
+            <!-- 2️⃣code HTML below -->
+            
+            <button class="btn" onclick="location.href='/updatePlayer'">Update a Player</button>
+          
+          </div>
+    </div>
+  </section><!-- End Players Section -->
+
+{% endblock form %}

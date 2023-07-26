@@ -1,0 +1,119 @@
+{% extends 'viewBase.html' %}
+
+{% block form %} 
+
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>PLAYER DETAILS</h2>
+      </div>
+
+      
+      <tr>
+        <td><h1 style="background-color: rgb(58, 88, 137);color: rgb(255, 255, 255);padding-top: 25px;padding-bottom: 25px;text-align: center;">{{ plrName }}</h1></td>
+        <br>
+
+      </tr>
+      
+      
+      <table style="margin-left:130px;">
+        {% for i in stats %}
+        <tr style="border: 5px solid black;">
+          <td class="inline-block" style="color: rgb(42, 63, 165); margin-bottom:30px;"><h3 text-align: center;>Nationality:</h3></td>
+          <td class="inline-block" style="margin-bottom:30px;"><h3>{{plrNation}}</h3></td>
+          <td class="inline-block" style="color: rgb(42, 63, 165); margin-bottom:30px;"><h3>Speciality:</h3></td>
+          <td class="inline-block" style="margin-bottom:30px;"><h3>{{plrType}}</h3></td>
+          <td><img style='height: 200px; margin-left: 50px;' src="{{plrImage}}" alt="Player Image"></td>
+          <br>
+        </tr><br>
+
+        <tr style="border: 5px solid black;">
+          <td class="inline-block" style="color: rgb(42, 63, 165);"> <h3>Avg Runs:</h3></td>
+          <td class="inline-block"><h4>{{i.avgRuns}}</h4></td>
+          <td class="inline-block" style="color: rgb(42, 63, 165);"> <h3>Avg Wickets:</h3></td>
+          <td class="inline-block"><h4>{{i.avgWickets}}</h4></td>
+          </tr>
+          <tr style="border: 5px solid black;">
+          <td class="inline-block" style="color: rgb(42, 63, 165); "> <h3>Matches:</h3></td>
+          <td class="inline-block"><h4>{{i.matches}}</h4></td>
+          <td class="inline-block" style="color: rgb(42, 63, 165);"> <h4>Base Price:</h4>(in Cr)</td>
+            <td class="inline-block"><h4 style="font-size: 30px;">{{bp}}</h4></td></tr>
+        </tr>
+    
+        {% endfor %}
+      </table>
+      
+      <style>
+        .inline-block {
+          display: inline-block;
+          width: 150px; /* set a fixed width for each cell */
+          text-align: left;
+        }
+      </style>
+<br><br><br>{% include "message.html" %}
+
+      <div style="text-align: center;">
+        <form action = "/actualBidding" method = 'POST'> 
+        <label for="teamName"><h2>Select a franchise:</h2></label>
+        
+      <select style="height: 50px; text-align: center; margin-right: 100px; " name = "teamName">
+        <option value="None">No franchise selected</option>
+        {% for i in franTeams %}
+        <option value="{{ i.teamName }}">{{ i.teamName }}</option>
+        {% endfor %}
+      </select>
+      <label for="bidAmtInput"><h2>Enter Bid amount:</h2></label>
+      <input type="number" name="bidAmtInput" placeholder="Enter bid amount" style="height: 50px; margin-left: 10px;">
+
+    </div>
+
+      
+    <br><br><br>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+        
+        .btn{
+        
+        font-family: Nunito;
+        font-weight: 300;
+        font-size: 15px;
+        color: #fff;
+        background-color: #09325c;
+        padding: 8px 20px;
+        border: 2px solid #09325c;
+        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border-radius: 9px;
+        transition : 1000ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin: 0 auto;
+        display: block;
+        }
+        
+        .btn:hover{
+        
+        transition : 1000ms;
+        padding: 10px 50px;
+        transform : translateY(-0px);
+        background-color: #fff;
+        color: #0066cc;
+        border: solid 2px #0066cc;
+        }
+        
+        </style>
+        
+        <!-- 2️⃣code HTML below -->
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+        <button type = "submit" class="btn">Save Transaction</button>
+      </form>
+    </div>
+  </section><!-- End Players Section -->
+
+{% endblock form %}

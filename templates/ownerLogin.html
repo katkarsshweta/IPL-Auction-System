@@ -1,0 +1,39 @@
+{% extends 'baseSignIn.html' %}
+
+{% block title %} Log In {% endblock title %}
+
+{% block form %} 
+
+<style>
+h3 {text-align: center;}
+
+</style>
+    
+<h3>FRANCHISE</h3>
+<h5 style="text-align: center;">Login</h5>
+
+<div class = "row">
+<div class = "col-md-4"></div>
+
+<div class = "col-md-4">
+    <form action = "/login" method = "post">
+        {% include "message.html" %}
+        <div class="form-group">
+            <input type = "text" class = "form-control mt-2" placeholder="Enter Franchise Name" name = "teamName" required>
+        </div>
+        
+        <div class="form-group">
+                <input type = "password" class = "form-control mt-2" placeholder="Enter Password" name = "ownerPass" required>
+        </div>
+                <!-- <div class = "col-md-4"></div> -->
+        <br>
+
+        <button type = "submit" class = "btn btn-info" style="margin-left: 140px;">Log In!</button>
+<!-- </div> -->
+
+</form>
+<a href="/signin" style="margin-left: 110px;">Click here to Sign In</a>
+</div>
+</div>
+
+{% endblock form %}

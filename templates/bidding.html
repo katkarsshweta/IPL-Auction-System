@@ -1,0 +1,59 @@
+{% extends 'viewBase.html' %}
+
+{% block title %} Bidding Players {% endblock title %}
+
+{% block form %} 
+
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>AUCTION ARENA</h2>
+      </div>
+      {% include "message.html" %}
+      <!-- <h3>Display all available players - bidding process</h3> -->
+
+      <form method="GET">
+        <label for="condition">Filter players by:</label>
+        <select name="condition" id="condition">
+          {% for condition in conditions %}
+          <option value="{{ condition }}">{{ condition }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Apply filter</button>
+      </form>
+
+      <table class="table text-center" cellpadding ="30">
+        <tr>
+          <th><h3>ID </h3></th>
+          <th><h3>Name </h3></th>
+          <th><h3>Type</h3></th>
+          <th><h3>Nationality </h3></th>
+          <th><h3>Base Price</h3></th>
+        </tr>
+        {% for i in plr %}
+        <tr>
+          <td>{{ i.playerID }}</td>
+          <td>{{ i.playerName }}</td>
+          <td>{{ i.playerType }}</td>
+          <td>{{ i.playerNation }}</td>
+          <td>{{ i.basePrice }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+        
+      <form action = '/aboutPlayer' method = 'POST'>
+      <select style="height: 50px; text-align: center; margin-left: 426px;" name = "playerID">
+        <option value="None">No player selected</option>
+        {% for i in plr %}
+        <option value="{{ i.playerID }}">{{ i.playerID }}</option>
+        {% endfor %}
+      </select>
+      <button type = "submit" class = "btn btn-info" style ="height: 50px;margin-left: 50px;margin-bottom: 3px;">GO!</button>
+      
+      </form>
+
+    </div>
+  </section><!-- End Bidding Section -->
+
+{% endblock form %}
