@@ -22,9 +22,10 @@ player,  including  their  performance  history,  average  runs,  and  wickets.
 interface,  making  it  easy  for  users  to  navigate  and  manage  their  teams.
 
 ### ENTITY-RELATION  DIAGRAM
-
+![IPL](https://github.com/katkarsshweta/IPL-Auction-System/assets/114807467/da1aae71-ccc1-495c-b854-3306d4267af3)
 
 ### TOOLS USED :
+
 1) Mysql  8.0
 2) PYTHON:  Flask-SqlAlchemy
 3) Frontend - HTML, CSS (bootstrap template)
